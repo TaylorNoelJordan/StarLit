@@ -1,5 +1,5 @@
 import React from 'react';
-import{ postSign } from '../../../utilz/apiCalls';
+import { postSign } from '../../utilz/apiCalls';
 import { connect } from 'react-redux';
 import { setUser, hasErrored } from '../../actions'
 import './HoroscopeForm.css'

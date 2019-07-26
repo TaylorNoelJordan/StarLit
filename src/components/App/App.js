@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 import HoroscopeForm from '../HoroscopeForm/HoroscopeForm';
-import unlock from './images/unlock-dribbble.jpg'
-import venus from './images/038-venus.svg';
-import purplePlanet from './images/018-planets.svg';
+import unlock from '../../images/unlock-dribbble.jpg'
+import venus from '../../images/038-venus.svg';
+import purplePlanet from '../../images/018-planets.svg';
 
 
 class App extends React.Component {
