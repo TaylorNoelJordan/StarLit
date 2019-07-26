@@ -2,6 +2,7 @@ import React from 'react';
 import { postSign } from '../../utilz/apiCalls';
 import { connect } from 'react-redux';
 import { setUser, hasErrored } from '../../actions'
+import { Link } from 'react-router-dom';
 import './HoroscopeForm.css'
 
 class HoroscopeForm extends React.Component {
@@ -19,10 +20,11 @@ class HoroscopeForm extends React.Component {
 
     handleSubmit = async (e) => {
         e.preventDefault();
-        const { sign } = this.state;
+        const { sign, name } = this.state;
         try {
             let user = await postSign(sign);
-            this.props.setUser(user)
+            // console.log(user)
+            this.props.setUser({...user, sign: sign, name: name})
         } catch ({ message }) {
             this.props.hasErrored(message)
         }
@@ -50,7 +52,12 @@ class HoroscopeForm extends React.Component {
                         <option value='aquarius'>Aquarius (Jan 20-Feb 18)</option>
                         <option value='pisces'>Pisces (Feb 19-Mar 20)</option>
                     </select>
-                    <button className='horoscope-form-submit' onClick={e => this.handleSubmit(e)}>Skeddit!</button>
+                    <button className='horoscope-form-submit' 
+                        onClick={e => this.handleSubmit(e)}>
+                        <Link to='/horoscope'>
+                            Skeddit!
+                        </Link>
+                    </button>
                 </form>
             </section>
         )

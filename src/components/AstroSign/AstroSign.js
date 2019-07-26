@@ -1,9 +1,14 @@
 import React from 'react';
 import './AstroSign.css'
+// import '../../images'
 
-const AstroSign = () => {
+const AstroSign = ({sign, dateRange}) => {
+    const img = `../../images/${sign}.svg`
     return (
-        <img src='' alt='astro sign symbol' className='astro-symbol'/>
+        <>
+        <img src={img} alt='astro sign symbol' className='astro-symbol'/>
+        <p>{dateRange}</p>
+        </>
     )
 }
 

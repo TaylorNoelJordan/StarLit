@@ -1,25 +1,22 @@
 import React from 'react';
 import './App.css';
+import HomePage from '../HomePage/HomePage';
 import HoroscopeForm from '../HoroscopeForm/HoroscopeForm';
-import unlock from '../../images/unlock-dribbble.jpg'
-import venus from '../../images/038-venus.svg';
-import purplePlanet from '../../images/018-planets.svg';
+import HoroscopeDetails from '../HoroscopeDetails/HoroscopeDetails';
+import { Route, Link } from 'react-router-dom';
+
 
 
 class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          {/* <img src={venus} alt='purple planet icon' className='icon'/> */}
-          <h3>Twinkle, twinkle, little star, point me to the nearest bar.</h3>
-          {/* <img src={purplePlanet} alt='purple planet icon' className='icon'/> */}
-        </header>
-        <main className='home-page'>
-          {/* <img src={unlock} alt='universe through a keyhole' className='home-page-img'/> */}
-          {/* <button className='home-page-btn'>Enter...</button> */}
-        </main>
-        <HoroscopeForm />
+        {/* <header className="App-header">
+
+         </header> */}
+        <Route exact path ='/' render={() => <HomePage />} />
+        <Route exact path='/info' render ={() => <HoroscopeForm />} />
+        <Route exact path='/horoscope' render={() => <HoroscopeDetails />} />
         <h1 className='App-title'>StarLit</h1>
       </div>
     );
