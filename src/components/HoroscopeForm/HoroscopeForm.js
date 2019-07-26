@@ -11,6 +11,7 @@ class HoroscopeForm extends React.Component {
         this.state = {
             name: '',
             sign: '',
+            error: ''
         }
     }
 
@@ -18,9 +19,18 @@ class HoroscopeForm extends React.Component {
         this.setState({[e.target.name]: e.target.value})
     }
 
+    checkInputs = () => {
+        if(this.state.name || this.state.value === '') {
+            this.setState({ error: 'This input is required' })
+        } else {
+            this.setState({ error: ''})
+        }
+    }
+
     handleSubmit = async (e) => {
         e.preventDefault();
         const { sign, name } = this.state;
+        this.checkInputs()
         try {
             let user = await postSign(sign);
             // console.log(user)
@@ -36,7 +46,9 @@ class HoroscopeForm extends React.Component {
                 <form className='horoscope-form'>
                     <label for='name'>What's yo name?</label>
                     <input type='text' className='horscope-form-input' name='name' onChange={this.handleChange} value={this.state.name} />
+                    <span className='errorMessge'>{this.state.error}</span>
                     <label for='sign'>What's yo sign?</label>
+                    <span className='errorMessge'>{this.state.error}</span>
                     <select name='sign' value={this.state.sign} onChange={this.handleChange} className='horoscope-form-input'>
                         <option>Choose One...</option>
                         <option value='aries'>Aries (Mar 21-Apr 19)</option>
@@ -69,7 +81,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    setUser: user => dispatch(setUser(user))
+    setUser: user => dispatch(setUser(user)),
+    hasErrored: errorMsg => (hasErrored(errorMsg))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HoroscopeForm);
