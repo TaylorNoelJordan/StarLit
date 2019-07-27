@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import './HoroscopeForm.css'
 
-class HoroscopeForm extends React.Component {
+export class HoroscopeForm extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -83,11 +83,11 @@ class HoroscopeForm extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
     user: state.user
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
     setUser: user => dispatch(setUser(user)),
     hasErrored: errorMsg => (hasErrored(errorMsg))
 })
