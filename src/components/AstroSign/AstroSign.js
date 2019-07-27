@@ -9,7 +9,7 @@ const AstroSign = ({sign, dateRange}) => {
     return (
         <>
         <img src={aries} alt='astro sign symbol' className='astro-symbol'/>
-        <p>{dateRange}</p>
+        <p className='date-range'>{dateRange}</p>
         </>
     )
 }

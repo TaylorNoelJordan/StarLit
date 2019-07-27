@@ -3,6 +3,7 @@ import { postSign } from '../../utilz/apiCalls';
 import { connect } from 'react-redux';
 import { setUser, hasErrored } from '../../actions'
 import { Link } from 'react-router-dom';
+// import PropTypes from 'prop-types';
 import './HoroscopeForm.css'
 
 class HoroscopeForm extends React.Component {
@@ -20,7 +21,7 @@ class HoroscopeForm extends React.Component {
     }
 
     checkInputs = () => {
-        if(this.state.name || this.state.value === '') {
+        if(this.state.name === '' || this.state.value === '') {
             this.setState({ error: 'This input is required' })
         } else {
             this.setState({ error: ''})
@@ -45,10 +46,15 @@ class HoroscopeForm extends React.Component {
             <section className='horoscope-form-display'>
                 <form className='horoscope-form'>
                     <label for='name'>What's yo name?</label>
-                    <input type='text' className='horscope-form-input' name='name' onChange={this.handleChange} value={this.state.name} />
-                    <span className='errorMessge'>{this.state.error}</span>
+                    <input 
+                        type='text' 
+                        className='horscope-form-input' 
+                        name='name' 
+                        onChange={this.handleChange} 
+                        value={this.state.name}
+                        autocomplete='off'/>
+                    <span className='errorMessage'>{this.state.error}</span>
                     <label for='sign'>What's yo sign?</label>
-                    <span className='errorMessge'>{this.state.error}</span>
                     <select name='sign' value={this.state.sign} onChange={this.handleChange} className='horoscope-form-input'>
                         <option>Choose One...</option>
                         <option value='aries'>Aries (Mar 21-Apr 19)</option>
@@ -64,12 +70,13 @@ class HoroscopeForm extends React.Component {
                         <option value='aquarius'>Aquarius (Jan 20-Feb 18)</option>
                         <option value='pisces'>Pisces (Feb 19-Mar 20)</option>
                     </select>
-                    <button className='horoscope-form-submit' 
-                        onClick={e => this.handleSubmit(e)}>
-                        <Link to='/horoscope'>
-                            Skeddit!
-                        </Link>
-                    </button>
+                    <span className='errorMessage'>{this.state.error}</span>
+                        <button className='horoscope-form-submit' 
+                            onClick={e => this.handleSubmit(e)}>
+                    <Link to='/horoscope'>
+                                YOLO!
+                    </Link>
+                        </button>
                 </form>
             </section>
         )
@@ -84,5 +91,9 @@ const mapDispatchToProps = dispatch => ({
     setUser: user => dispatch(setUser(user)),
     hasErrored: errorMsg => (hasErrored(errorMsg))
 })
+
+// HoroscopeForm.propTypes = {
+
+// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HoroscopeForm);
