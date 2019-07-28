@@ -1,0 +1,13 @@
+.astro-symbol {
+    background-color: #9cd8cd;
+    border-radius: 30px;
+    height: 100px;
+    margin: 15px;
+    opacity: 0.8;
+    padding: 8px;
+    width: 100px;
+}
+
+.date-range {
+    color: #9cd8cd;
+}
