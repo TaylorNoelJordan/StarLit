@@ -6,7 +6,7 @@ import { combineReducers } from 'redux';
 const rootReducer = combineReducers({
     user: userReducer,
     error: errorReducer,
-    loading: loadingReducer
+    isLoading: loadingReducer
 })
 
 export default rootReducer;

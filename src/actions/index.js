@@ -8,6 +8,6 @@ export const hasErrored = errorMsg => ({
     errorMsg
 });
 
-export const isLoading = () => ({
-    type: 'IS_LOADING'
+export const loadComplete = () => ({
+    type: 'LOAD_COMPLETE'
 });

@@ -25,7 +25,7 @@ describe('HoroscopeForm', () => {
         instance.handleChange = jest.fn();
         wrapper.find('select option[value="libra"]').simulate('change', mockEvent)
 
-        expect(wrapper.state('sign')).toEqual('Libra')
+        expect(wrapper.state('sign')).toEqual('libra')
     });
 
 

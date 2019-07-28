@@ -34,7 +34,6 @@ export class HoroscopeForm extends React.Component {
         this.checkInputs()
         try {
             let user = await postSign(sign);
-            // console.log(user)
             this.props.setUser({...user, sign: sign, name: name})
         } catch ({ message }) {
             this.props.hasErrored(message)
@@ -45,14 +44,14 @@ export class HoroscopeForm extends React.Component {
         return (
             <section className='horoscope-form-display'>
                 <form className='horoscope-form'>
-                    <label for='name'>What's yo name?</label>
+                    <label htmlFor='name'>What's yo name?</label>
                     <input 
                         type='text' 
                         className='horscope-form-input' 
                         name='name' 
                         onChange={this.handleChange} 
                         value={this.state.name}
-                        autocomplete='off'/>
+                        autoComplete='off'/>
                     <span className='errorMessage'>{this.state.error}</span>
                     <label for='sign'>What's yo sign?</label>
                     <select name='sign' value={this.state.sign} onChange={this.handleChange} className='horoscope-form-input'>
