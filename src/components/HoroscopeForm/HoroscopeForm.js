@@ -53,7 +53,7 @@ export class HoroscopeForm extends React.Component {
                         value={this.state.name}
                         autoComplete='off'/>
                     <span className='errorMessage'>{this.state.error}</span>
-                    <label for='sign'>What's yo sign?</label>
+                    <label htmlFor='sign'>What's yo sign?</label>
                     <select name='sign' value={this.state.sign} onChange={this.handleChange} className='horoscope-form-input'>
                         <option>Choose One...</option>
                         <option value='aries'>Aries (Mar 21-Apr 19)</option>
@@ -72,9 +72,9 @@ export class HoroscopeForm extends React.Component {
                     <span className='errorMessage'>{this.state.error}</span>
                         <button className='horoscope-form-submit' 
                             onClick={e => this.handleSubmit(e)}>
-                    <Link to='/horoscope'>
+                            <Link to='/horoscope' className='submit-link'>
                                 YOLO!
-                    </Link>
+                            </Link>
                         </button>
                 </form>
             </section>

@@ -47,6 +47,18 @@ select {
     margin: 5px;
     width: 400px;
 }
+
+.submit-link {
+    color: black;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.submit-link:hover {
+    color: #EB4D8D;
+}
+
 .errorMessage {
     color: #EB4D8D;
 }
