@@ -3,7 +3,8 @@ import { postSign } from '../../utilz/apiCalls';
 import { connect } from 'react-redux';
 import { setUser, hasErrored } from '../../actions'
 import { Link } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './HoroscopeForm.css'
 
 export class HoroscopeForm extends React.Component {
@@ -31,8 +32,8 @@ export class HoroscopeForm extends React.Component {
     handleSubmit = async (e) => {
         e.preventDefault();
         const { sign, name } = this.state;
-        this.checkInputs()
         try {
+            this.checkInputs()
             let user = await postSign(sign);
             this.props.setUser({...user, sign: sign, name: name})
         } catch ({ message }) {
@@ -55,7 +56,7 @@ export class HoroscopeForm extends React.Component {
                     <span className='errorMessage'>{this.state.error}</span>
                     <label htmlFor='sign'>What's yo sign?</label>
                     <select name='sign' value={this.state.sign} onChange={this.handleChange} className='horoscope-form-input'>
-                        <option>Choose One...</option>
+                        <option value=''>Choose One...</option>
                         <option value='aries'>Aries (Mar 21-Apr 19)</option>
                         <option value='taurus'>Taurus (Apr 20-May 20)</option>
                         <option value='gemini'>Gemini (May 21-June 20)</option>
@@ -83,7 +84,8 @@ export class HoroscopeForm extends React.Component {
 }
 
 export const mapStateToProps = state => ({
-    user: state.user
+    user: state.user,
+    error: state.error
 });
 
 export const mapDispatchToProps = dispatch => ({
@@ -91,8 +93,12 @@ export const mapDispatchToProps = dispatch => ({
     hasErrored: errorMsg => (hasErrored(errorMsg))
 })
 
-// HoroscopeForm.propTypes = {
+HoroscopeForm.propTypes = {
+    user: PropTypes.object.isRequired,
+    error: PropTypes.string.isRequired,
+    setUer: PropTypes.func.isRequired,
+    hasErrored: PropTypes.func.isRequired
 
-// }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(HoroscopeForm);
