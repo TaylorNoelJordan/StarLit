@@ -19,7 +19,7 @@ export const Details = (props) => {
             <Link to='/'>
                 <button 
                     className='start-over-btn'
-                    onClick={clearUser}>
+                    onClick={clearUser()}>
                         Start Over
                 </button>
             </Link>

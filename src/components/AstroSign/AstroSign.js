@@ -1,16 +1,17 @@
 import React from 'react';
 import './AstroSign.css'
 import { connect } from 'react-redux';
-import aries from '../../images/aries.svg'
+// import aries from '../../images/aries.svg'
+let images = require.context('../../../signImages', true);
 
 
 
 const AstroSign = (props) => {
     const { sign, dateRange } = props
-    // const img = `../../images/${sign}.svg`
+    const img_src= images(`./${sign}.svg`)
     return (
         <>
-        <img src={aries} alt='astro sign symbol' className='astro-symbol'/>
+        <img src={img_src} alt='astro sign symbol' className='astro-symbol'/>
         <p className='date-range'>{dateRange}</p>
         </>
     )
