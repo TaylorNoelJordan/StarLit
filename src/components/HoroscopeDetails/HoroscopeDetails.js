@@ -3,6 +3,7 @@ import AstroSign from '../AstroSign/AstroSign';
 import { Link, Redirect } from 'react-router-dom';
 import { clearUser } from '../../actions';
 import { connect } from 'react-redux';
+import FadeIn from 'react-fade-in';
 import PropTypes from 'prop-types';
 import './HoroscopeDetails.css';
 
@@ -12,7 +13,7 @@ export const HoroscopeDetails = (props) => {
                 <p>The stars have aligned and the heavens have parted! The cosmos give permission for an evening of boozy indulgence, 
                     with the condition that the vibes stay as high as possible. Stay safe and have fun! 
                     Need some advice on what to wear and who to link up with?</p>
-                    <Link to='/details'><button className='route-btn'>Yasss</button></Link>
+                    <Link to='/details' className='yasss-btn'>YASSSS</Link>
             </>
     )
 
@@ -25,6 +26,7 @@ export const HoroscopeDetails = (props) => {
     const { name, message, user, verdict, clearUser } = props;
 
     return (
+        <FadeIn>
         <section className='horoscope-details-display'>
             <AstroSign />
             <article className='horoscope-details'>
@@ -42,6 +44,7 @@ export const HoroscopeDetails = (props) => {
                 </button>
             </Link>
         </section>
+        </FadeIn>
     )
 }
 

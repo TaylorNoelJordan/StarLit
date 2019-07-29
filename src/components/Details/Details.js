@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { clearUser } from '../../actions'
+import FadeIn from 'react-fade-in';
 import { Link } from 'react-router-dom';
 import './Details.css';
 
@@ -8,6 +9,7 @@ export const Details = (props) => {
     const { time, color, mood, compatibility, clearUser } = props
     return (
         <section className="yes-details">
+            <FadeIn>
             <h3 className='yes-details-topic'>Tonight's feel:</h3>
             <p className='yes-result'>{mood}</p>
             <h3 className='yes-details-topic'>Color to wear:</h3>
@@ -19,10 +21,11 @@ export const Details = (props) => {
             <Link to='/'>
                 <button 
                     className='start-over-btn'
-                    onClick={clearUser()}>
+                    onClick={clearUser}>
                         Start Over
                 </button>
             </Link>
+        </FadeIn>
         </section>
     )
 }

@@ -3,7 +3,7 @@ import { postSign, getEmotion } from '../../utilz/apiCalls';
 import { connect } from 'react-redux';
 import { setUser, hasErrored, setVerdict } from '../../actions'
 import { Redirect } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
+import FadeIn from 'react-fade-in';
 import PropTypes from 'prop-types';
 import './HoroscopeForm.css'
 
@@ -62,6 +62,7 @@ export class HoroscopeForm extends React.Component {
         return (
             <section className='horoscope-form-display'>
                 <form className='horoscope-form'>
+                <FadeIn>
                     <label htmlFor='name'>What's yo name?</label>
                     <input 
                         type='text' 
@@ -92,6 +93,7 @@ export class HoroscopeForm extends React.Component {
                             onClick={e => this.handleSubmit(e)}>
                             YOLO!
                         </button>
+            </FadeIn>
                 </form>
                 {/* {this.props.isLoading && <Redirect to='/loading'/>} */}
                 {this.props.user.sign && <Redirect to='/horoscope'/>}
@@ -120,4 +122,4 @@ HoroscopeForm.propTypes = {
 
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HoroscopeForm));
+export default connect(mapStateToProps, mapDispatchToProps)(HoroscopeForm);

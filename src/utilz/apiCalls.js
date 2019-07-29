@@ -1,4 +1,4 @@
-import apiKey from './apiKey'
+import { apiKey } from './apiKey'
 
 export const postSign = async (sign) => {
   try {

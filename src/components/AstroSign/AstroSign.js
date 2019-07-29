@@ -1,7 +1,8 @@
 import React from 'react';
 import './AstroSign.css'
 import { connect } from 'react-redux';
-// import aries from '../../images/aries.svg'
+import { Redirect } from 'react-router-dom';
+// import sun from '../../images/039-sun.svg;'
 let images = require.context('../../../signImages', true);
 
 
@@ -9,11 +10,14 @@ let images = require.context('../../../signImages', true);
 const AstroSign = (props) => {
     const { sign, dateRange } = props
     const img_src= images(`./${sign}.svg`)
+    const sun = images('./039-sun.svg')
     return (
         <>
-        <img src={img_src} alt='astro sign symbol' className='astro-symbol'/>
+        <img src={sign ? img_src : sun} alt='astro sign symbol' className='astro-symbol'/>
         <p className='date-range'>{dateRange}</p>
+        {!img_src && <Redirect to='/'/>}
         </>
+
     )
 }
 
