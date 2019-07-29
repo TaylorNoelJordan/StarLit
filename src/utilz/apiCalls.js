@@ -16,15 +16,15 @@ export const postSign = async (sign) => {
   } catch (error) {
     throw Error(error.message)
   }
-
 }
 
-export const getEmotion = async (message) => {
-  try {
-    const url = ''
-    const options
-  } catch(error) {
-    throw Error(error.message)
-  }
-
-}
+// export const getEmotion = async (message) => {
+//   try {
+//     const url = ''
+//     const options = {
+//       method: ''
+//     }
+//   } catch(error) {
+//     throw Error(error.message)
+//   }
+// }
