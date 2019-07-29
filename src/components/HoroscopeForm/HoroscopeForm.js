@@ -1,5 +1,5 @@
 import React from 'react';
-import { postSign } from '../../utilz/apiCalls';
+import { postSign, getEmotion } from '../../utilz/apiCalls';
 import { connect } from 'react-redux';
 import { setUser, hasErrored } from '../../actions'
 import { Link } from 'react-router-dom';
@@ -45,6 +45,10 @@ export class HoroscopeForm extends React.Component {
         try {
             let user = await postSign(sign);
             this.props.setUser({...user, sign: sign, name: name})
+            let message = user.description
+            let results = await getEmotion(message)
+            console.log('results', results)
+            return results
             // this.props.push('/horoscope')
         } catch ({ message }) {
             this.props.hasErrored(message)
