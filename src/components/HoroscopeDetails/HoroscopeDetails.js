@@ -1,8 +1,9 @@
 import React from 'react';
 import AstroSign from '../AstroSign/AstroSign';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loadComplete } from '../../actions'
+// import { loadComplete } from '../../actions'
+import PropTypes from 'prop-types';
 import './HoroscopeDetails.css';
 
 export const HoroscopeDetails = (props) => {
@@ -11,7 +12,7 @@ export const HoroscopeDetails = (props) => {
                 <p>The stars have aligned and the heavens have parted! The cosmos give permission for an evening of boozy indulgence, 
                     with the condition that the vibes stay as high as possible. Stay safe and have fun! 
                     Need some advice on what to wear and who to link up with?</p>
-                    <Link to='/details'>YASSSS</Link>
+                    <Link to='/details'>Yasss</Link>
             </>
     )
 
@@ -21,40 +22,37 @@ export const HoroscopeDetails = (props) => {
                 get some deep sleep. Enjoy a night in and check back tomorrow.</p>
     )
 
-    const { sign, name, dateRange, message, isLoading } = props;
-    const loadingGif = 'https://media2.giphy.com/media/xTkcEQACH24SMPxIQg/giphy.gif';
-    const loading = (
-      <section className="loading-gif-container">
-        <img src={loadingGif} alt="loading-gif" className="loading-gif" />
-      </section>
-    );
+    const { name, message, user, verdict } = props;
+
     return (
         <section className='horoscope-details-display'>
-        {/* {isLoading && loading} */}
-            <AstroSign 
-                sign={sign}
-                dateRange={dateRange}
-            />
+            <AstroSign />
             <article className='horoscope-details'>
-            <h2>A-yo {name},</h2>
+            <h2 className='results-heading'>A-yo {name},</h2>
                 <p>{message}</p>
             <h2 className='results-heading'>The Verdict:</h2>
-                {yesMessage}
+                {verdict ==='positive' ? yesMessage : noMessage}
             </article>
+            {!user.name && <Redirect to='/'/>}
         </section>
     )
 }
 
 export const mapStateToProps = state => ({
-    sign: state.user.sign,
+    user: state.user,
     name: state.user.name,
-    dateRange: state.user.date_range,
     message: state.user.description,
-    isLoading: state.isLoading
+    verdict: state.verdict
 });
 
-export const mapDispatchToProps = dispatch => ({
-  loadComplete: () => dispatch(loadComplete())
-})
 
-export default connect(mapStateToProps, mapDispatchToProps)(HoroscopeDetails);
+HoroscopeDetails.propTypes = {
+    user: PropTypes.object,
+    name: PropTypes.string,
+    message: PropTypes.string,
+    verdict: PropTypes.string
+}
+
+
+
+export default connect(mapStateToProps)(HoroscopeDetails);

@@ -1,8 +1,8 @@
 import React from 'react';
 import { postSign, getEmotion } from '../../utilz/apiCalls';
 import { connect } from 'react-redux';
-import { setUser, hasErrored } from '../../actions'
-import { Link } from 'react-router-dom';
+import { setUser, hasErrored, setVerdict } from '../../actions'
+import { Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './HoroscopeForm.css'
@@ -48,6 +48,8 @@ export class HoroscopeForm extends React.Component {
             let message = user.description
             let results = await getEmotion(message)
             console.log('results', results)
+            this.props.setVerdict(results)
+            this.props.loadComplete();
             return results
             // this.props.push('/horoscope')
         } catch ({ message }) {
@@ -57,6 +59,7 @@ export class HoroscopeForm extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <section className='horoscope-form-display'>
                 <form className='horoscope-form'>
@@ -88,11 +91,11 @@ export class HoroscopeForm extends React.Component {
                     <span className='errorMessage'>{this.state.error}</span>
                         <button className='horoscope-form-submit' 
                             onClick={e => this.handleSubmit(e)}>
-                            <Link to='/horoscope' className='submit-link'>
-                                YOLO!
-                            </Link>
+                            YOLO!
                         </button>
                 </form>
+                {/* {this.props.isLoading && <Redirect to='/loading'/>} */}
+                {this.props.user.sign && <Redirect to='/horoscope'/>}
             </section>
         )
     }
@@ -100,12 +103,14 @@ export class HoroscopeForm extends React.Component {
 
 export const mapStateToProps = state => ({
     user: state.user,
-    error: state.error
+    error: state.error,
+    verdict: state.verdict
 });
 
 export const mapDispatchToProps = dispatch => ({
     setUser: user => dispatch(setUser(user)),
-    hasErrored: errorMsg => (hasErrored(errorMsg))
+    hasErrored: errorMsg => (hasErrored(errorMsg)),
+    setVerdict: status => (setVerdict(status))
 })
 
 HoroscopeForm.propTypes = {

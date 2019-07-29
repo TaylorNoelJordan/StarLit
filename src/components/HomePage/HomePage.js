@@ -8,9 +8,9 @@ const HomePage = () => {
     return (
         <main className='home-page'>
             <div className='home-page-heading'>
-                <img src={purplePlanet} alt='purple planet icon' className='icon'/>
+                {/* <img src={purplePlanet} alt='purple planet icon' className='icon'/> */}
                 <h3>Star light, star bright, shall I rage with my friends tonight?</h3>
-                <img src={venus} alt='purple planet icon' className='icon'/>
+                {/* <img src={venus} alt='purple planet icon' className='icon'/> */}
             </div>
           <img src={unlock} alt='universe through a keyhole' className='home-page-img'/>
           <Link to='/info'><button className='home-page-btn'>Enter...</button></Link>

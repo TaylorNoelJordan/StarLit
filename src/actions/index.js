@@ -11,3 +11,8 @@ export const hasErrored = errorMsg => ({
 export const loadComplete = () => ({
     type: 'LOAD_COMPLETE'
 });
+
+export const setVerdict = (status) =>({
+    type: 'SET_VERDICT',
+    status
+})
