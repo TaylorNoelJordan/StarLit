@@ -1,3 +1,5 @@
+import apiKey from './apiKey'
+
 export const postSign = async (sign) => {
   try {
     const url = `https://aztro.sameerkumar.website/?sign=${sign}&day=today`
@@ -20,17 +22,10 @@ export const postSign = async (sign) => {
 
 export const getEmotion = async (message) => {
   try {
-    const url = `https://api.dandelion.eu/datatxt/sent/v1/?lang=en&text=${message}&token=339faaf0299540c48cba72afe04e9044`;
-    // const options = {
-    //   method: 'GET',
-    //   headers: {'Content-Type': 'application/json;charset=UTF-8'},
-    //   body: { message: message}
-    // }
+    const url = `https://api.dandelion.eu/datatxt/sent/v1/?lang=en&text=${message}&token=${apiKey}`;
     const results = await fetch(url);
     const parsed = await results.json();
-    console.log('parsed', parsed)
     const verdict = parsed.sentiment.type
-    console.log('verdict', verdict)
     return verdict
   } catch(error) {
     throw Error(error.message)
