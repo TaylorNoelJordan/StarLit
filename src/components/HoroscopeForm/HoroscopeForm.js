@@ -21,23 +21,34 @@ export class HoroscopeForm extends React.Component {
         this.setState({[e.target.name]: e.target.value})
     }
 
-    checkInputs = () => {
-        if(this.state.name === '' || this.state.value === '') {
+    checkNameInput = () => {
+        if(this.state.name === '') {
             this.setState({ error: 'This input is required' })
         } else {
-            this.setState({ error: ''})
+            this.setState({ error: '' })
+        }
+    }
+
+    checkOptionInput = () => {
+        if(this.state.value === '') {
+            this.setState({ error: 'This input is required' })
+        } else {
+            this.setState({ error: '' })
         }
     }
 
     handleSubmit = async (e) => {
         e.preventDefault();
         const { sign, name } = this.state;
+        this.checkNameInput()
+        this.checkOptionInput()
         try {
-            this.checkInputs()
             let user = await postSign(sign);
             this.props.setUser({...user, sign: sign, name: name})
+            // this.props.push('/horoscope')
         } catch ({ message }) {
             this.props.hasErrored(message)
+            // this.props.history.push('/info')  
         }
     }
 
@@ -94,11 +105,11 @@ export const mapDispatchToProps = dispatch => ({
 })
 
 HoroscopeForm.propTypes = {
-    user: PropTypes.object.isRequired,
-    error: PropTypes.string.isRequired,
-    setUer: PropTypes.func.isRequired,
-    hasErrored: PropTypes.func.isRequired
+    user: PropTypes.object,
+    error: PropTypes.string,
+    setUer: PropTypes.func,
+    hasErrored: PropTypes.func
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HoroscopeForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HoroscopeForm));

@@ -18,3 +18,13 @@ export const postSign = async (sign) => {
   }
 
 }
+
+export const getEmotion = async (message) => {
+  try {
+    const url = ''
+    const options
+  } catch(error) {
+    throw Error(error.message)
+  }
+
+}
