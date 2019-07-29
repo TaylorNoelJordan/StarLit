@@ -3,11 +3,11 @@ import './AstroSign.css'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 // import sun from '../../images/039-sun.svg;'
-let images = require.context('../../../signImages', true);
 
 
 
 const AstroSign = (props) => {
+    let images = require.context('../../../signImages', true);
     const { sign, dateRange } = props
     const img_src= images(`./${sign}.svg`)
     const sun = images('./039-sun.svg')

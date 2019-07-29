@@ -27,23 +27,23 @@ export const HoroscopeDetails = (props) => {
 
     return (
         <FadeIn>
-        <section className='horoscope-details-display'>
-            <AstroSign />
-            <article className='horoscope-details'>
-            <h2 className='results-heading'>A-yo {name},</h2>
-                <p>{message}</p>
-            <h2 className='results-heading'>The Verdict:</h2>
-                {verdict ==='positive' ? yesMessage : noMessage}
-            </article>
-            {!user.name && <Redirect to='/'/>}
-            <Link to='/'>
-                <button 
-                    className='start-over-btn'
-                    onClick={clearUser()}>
-                        Start Over
-                </button>
-            </Link>
-        </section>
+            <section className='horoscope-details-display'>
+                <AstroSign />
+                <article className='horoscope-details'>
+                <h2 className='results-heading'>A-yo {name},</h2>
+                    <p>{message}</p>
+                <h2 className='results-heading'>The Verdict:</h2>
+                    {verdict ==='positive' ? yesMessage : noMessage}
+                </article>
+                {!user.name && <Redirect to='/'/>}
+                <Link to='/'>
+                    <button 
+                        className='start-over-btn'
+                        onClick={clearUser()}>
+                            Start Over
+                    </button>
+                </Link>
+            </section>
         </FadeIn>
     )
 }
