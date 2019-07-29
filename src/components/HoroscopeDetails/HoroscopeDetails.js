@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { loadComplete } from '../../actions'
 import './HoroscopeDetails.css';
 
-const HoroscopeDetails = (props) => {
+export const HoroscopeDetails = (props) => {
     const yesMessage = (
             <>
                 <p>The stars have aligned and the heavens have parted! The cosmos give permission for an evening of boozy indulgence, 
@@ -45,7 +45,7 @@ const HoroscopeDetails = (props) => {
     )
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
     sign: state.user.sign,
     name: state.user.name,
     dateRange: state.user.date_range,
@@ -53,8 +53,8 @@ const mapStateToProps = state => ({
     isLoading: state.isLoading
 });
 
-const mapDispatchToProps = dispatch => ({
-  endLoading: () => dispatch(loadComplete())
+export const mapDispatchToProps = dispatch => ({
+  loadComplete: () => dispatch(loadComplete())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HoroscopeDetails);
