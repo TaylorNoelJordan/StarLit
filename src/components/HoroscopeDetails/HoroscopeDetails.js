@@ -1,8 +1,8 @@
 import React from 'react';
 import AstroSign from '../AstroSign/AstroSign';
 import { Link, Redirect } from 'react-router-dom';
+import { clearUser } from '../../actions';
 import { connect } from 'react-redux';
-// import { loadComplete } from '../../actions'
 import PropTypes from 'prop-types';
 import './HoroscopeDetails.css';
 
@@ -12,7 +12,7 @@ export const HoroscopeDetails = (props) => {
                 <p>The stars have aligned and the heavens have parted! The cosmos give permission for an evening of boozy indulgence, 
                     with the condition that the vibes stay as high as possible. Stay safe and have fun! 
                     Need some advice on what to wear and who to link up with?</p>
-                    <Link to='/details'>Yasss</Link>
+                    <Link to='/details'><button className='route-btn'>Yasss</button></Link>
             </>
     )
 
@@ -22,7 +22,7 @@ export const HoroscopeDetails = (props) => {
                 get some deep sleep. Enjoy a night in and check back tomorrow.</p>
     )
 
-    const { name, message, user, verdict } = props;
+    const { name, message, user, verdict, clearUser } = props;
 
     return (
         <section className='horoscope-details-display'>
@@ -34,6 +34,13 @@ export const HoroscopeDetails = (props) => {
                 {verdict ==='positive' ? yesMessage : noMessage}
             </article>
             {!user.name && <Redirect to='/'/>}
+            <Link to='/'>
+                <button 
+                    className='start-over-btn'
+                    onClick={clearUser}>
+                        Start Over
+                </button>
+            </Link>
         </section>
     )
 }
@@ -45,6 +52,10 @@ export const mapStateToProps = state => ({
     verdict: state.verdict
 });
 
+const mapDispatchToProps = dispatch => ({
+    clearUser: () => dispatch(clearUser())
+})
+
 
 HoroscopeDetails.propTypes = {
     user: PropTypes.object,
@@ -55,4 +66,4 @@ HoroscopeDetails.propTypes = {
 
 
 
-export default connect(mapStateToProps)(HoroscopeDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(HoroscopeDetails);

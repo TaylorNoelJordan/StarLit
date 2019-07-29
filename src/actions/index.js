@@ -3,6 +3,10 @@ export const setUser = (user) => ({
     user
 });
 
+export const clearUser = () => ({
+    type: 'CLEAR_USER'
+});
+
 export const hasErrored = errorMsg => ({
     type: 'HAS_ERRORED',
     errorMsg

@@ -48,9 +48,9 @@ export class HoroscopeForm extends React.Component {
             let message = user.description
             let results = await getEmotion(message)
             console.log('results', results)
-            this.props.setVerdict(results)
-            this.props.loadComplete();
-            return results
+            return this.props.setVerdict(results)
+            // this.props.loadComplete();
+            // return results
             // this.props.push('/horoscope')
         } catch ({ message }) {
             this.props.hasErrored(message)
@@ -59,7 +59,6 @@ export class HoroscopeForm extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <section className='horoscope-form-display'>
                 <form className='horoscope-form'>
@@ -109,8 +108,8 @@ export const mapStateToProps = state => ({
 
 export const mapDispatchToProps = dispatch => ({
     setUser: user => dispatch(setUser(user)),
-    hasErrored: errorMsg => (hasErrored(errorMsg)),
-    setVerdict: status => (setVerdict(status))
+    hasErrored: errorMsg => dispatch(hasErrored(errorMsg)),
+    setVerdict: status => dispatch(setVerdict(status))
 })
 
 HoroscopeForm.propTypes = {
