@@ -24,6 +24,7 @@ export const HoroscopeDetails = (props) => {
     )
 
     const { name, message, user, verdict, clearUser } = props;
+    console.log(props)
 
     return (
         <FadeIn>

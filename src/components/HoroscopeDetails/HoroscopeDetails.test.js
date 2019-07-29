@@ -2,13 +2,26 @@ import React from 'react';
 import { HoroscopeDetails, mapStateToProps, mapDispatchToProps }from './HoroscopeDetails'
 import { shallow } from 'enzyme';
 import { Link } from 'react-router-dom';
-import { loadComplete } from '../../actions';
+import { clearUser } from '../../actions';
 
 describe('HoroscopeDetails', () => {
     let wrapper;
+    let mockState;
 
     beforeEach(() => {
-        wrapper = shallow(<HoroscopeDetails/>);
+        mockState = {
+            user: {
+                name: 'Eleven',
+                sign: 'Scorpio',
+                description: 'The demagorgen didn\'t beat you, and neither shall the mind flayer. Keep a clear head tonight... You may be responsible for saving all your friends.',
+                color: 'gray',
+                mood: 'on',
+                date_range: ''
+            },
+            verdict: ''
+        }
+        const { user, name, sign, verdict } = mockState
+        wrapper = shallow(<HoroscopeDetails props={mockState}/>);
     });
 
     it('should match the snapshot', () => {
@@ -30,7 +43,7 @@ describe('HoroscopeDetails', () => {
                     mood: 'on',
                     date_range: ''
                 },
-                isLoading: true
+                verdict: ''
             }
 
             const expected = {
@@ -38,7 +51,7 @@ describe('HoroscopeDetails', () => {
                     sign: mockState.user.sign,
                     message: mockState.user.description,
                     dateRange: mockState.user.date_range,
-                    isLoading: true
+                    verdict: ''
             }
 
             const mappedProps = mapStateToProps(mockState);
@@ -53,11 +66,11 @@ describe('HoroscopeDetails', () => {
             mockDispatch = jest.fn();
         });
 
-        it('should call dispatch with loadComplete', () => {
-            const actionToDispatch = loadComplete({ isLoading: false });
+        it('should call dispatch with clearUser', () => {
+            const actionToDispatch = clearUser();
 
             const mappedProps = mapDispatchToProps(mockDispatch)
-            mappedProps.loadComplete({ isLoading: false })
+            mappedProps.clearUser()
 
             expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
         })

@@ -96,7 +96,7 @@ export class HoroscopeForm extends React.Component {
                         </button>
             </FadeIn>
                 </form>
-                {/* {this.props.user.sign && <Redirect to='/horoscope'/>} */}
+                {this.props.user.sign && <Redirect to='/horoscope'/>}
             </section>
         )
     }
