@@ -12,6 +12,10 @@ describe('HoroscopeForm', () => {
         instance = wrapper.instance();
     });
 
+    it('should match the snapshot', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
+
     it('should call set state when a name input is detected', () => {
         const mockEvent = { target: { name: 'name', value: 'Sailor Moon'}}
         instance.handleChange = jest.fn()
@@ -21,17 +25,17 @@ describe('HoroscopeForm', () => {
 
     });
 
-    it.skip('should call set state when an option is selected', () => {
+    it('should call set state when an option is selected', () => {
         const mockEvent = { target: { value: 'libra'}};
         instance.handleChange = jest.fn();
         wrapper.find('select option[value="libra"]').simulate('change', mockEvent)
 
-        expect(wrapper.find('select').props().value).toBe('libra')
+        expect(wrapper.find('option[value="libra"]').props().value).toBe('libra')
     });
 
 
-    it('should set an error in state if checkInputs fails', () => {
-        instance.checkInputs();
+    it('should set an error in state if checkNameInput fails', () => {
+        instance.checkNameInput();
 
         expect(wrapper.state('error')).toEqual('This input is required')
     });
@@ -150,13 +154,13 @@ describe('HoroscopeForm', () => {
             expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
         });
 
-        it.skip('should call dispatch with hasErrored', () => {
-            const actionToDispatch = hasErrored('error fetching your reults');
+        it('should call dispatch with hasErrored', () => {
+            const actionToDispatch = hasErrored('error fetching your results');
             
             const mappedProps = mapDispatchToProps(mockDispatch);
             mappedProps.hasErrored('error fetching your results');
 
-            expect(mockDispatch).toHaveBeenCalled();
+            expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
         })
 
     })

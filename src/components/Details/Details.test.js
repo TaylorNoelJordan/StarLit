@@ -1,7 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Link } from 'react-router-dom';
-import { Details, mapStateToProps } from './Details';
+import { Details, mapStateToProps, mapDispatchToProps } from './Details';
+import { clearUser } from '../../actions'
 
 describe('Details', () => {
     let wrapper;
@@ -39,6 +40,19 @@ describe('Details', () => {
             const mappedProps = mapStateToProps(mockState);
             expect(mappedProps).toEqual(expected)
 
-        })
+        });
     });
+
+    describe('mapDispatchToProps', () => {
+        it('should call dispatch with CLEAR_USER', () => {
+            const mockDispatch = jest.fn();
+            const actionToDispatch = clearUser();
+
+            const mappedProps = mapDispatchToProps(mockDispatch);
+            mappedProps.clearUser();
+
+            expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+        })
+
+    })
 })

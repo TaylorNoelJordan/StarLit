@@ -59,6 +59,7 @@ export class HoroscopeForm extends React.Component {
     }
 
     render() {
+        // const { user } = props;
         return (
             <section className='horoscope-form-display'>
                 <form className='horoscope-form'>
@@ -95,8 +96,7 @@ export class HoroscopeForm extends React.Component {
                         </button>
             </FadeIn>
                 </form>
-                {/* {this.props.isLoading && <Redirect to='/loading'/>} */}
-                {this.props.user.sign && <Redirect to='/horoscope'/>}
+                {/* {this.props.user.sign && <Redirect to='/horoscope'/>} */}
             </section>
         )
     }
