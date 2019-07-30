@@ -48,14 +48,9 @@ export class HoroscopeForm extends React.Component {
             this.props.setUser({...user, sign: sign, name: name})
             let message = user.description
             let results = await getEmotion(message)
-            console.log('results', results)
             return this.props.setVerdict(results)
-            // this.props.loadComplete();
-            // return results
-            // this.props.push('/horoscope')
         } catch ({ message }) {
             this.props.hasErrored(message)
-            // this.props.history.push('/info')  
         }
     }
 
