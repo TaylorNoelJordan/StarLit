@@ -6,9 +6,24 @@ import { setUser, hasErrored } from '../../actions';
 describe('HoroscopeForm', () => {
     let wrapper;
     let instance;
+    let mockProps;
 
     beforeEach(() => {
-        wrapper = shallow(<HoroscopeForm />)
+        mockProps = {
+            user: {
+                name: 'Eleven',
+                sign: 'Scorpio',
+                description: 'The demagorgen didn\'t beat you, and neither shall the mind flayer. Keep a clear head tonight... You may be responsible for saving all your friends.',
+                color: 'gray',
+                mood: 'on',
+                date_range: ''
+            },
+            verdict: '',
+            name: 'Eleven',
+            message: 'The demagorgen didn\'t beat you, and neither shall the mind flayer. Keep a clear head tonight... You may be responsible for saving all your friends.',
+            verdict: 'negative'
+        }
+        wrapper = shallow(<HoroscopeForm props={mockProps} />)
         instance = wrapper.instance();
     });
 
@@ -52,31 +67,20 @@ describe('HoroscopeForm', () => {
         it('should return the object of the current user', () => {
             const mockState = {
                 user : {
-                    name: 'Taylor',
-                    sign: 'aries',
-                    description: 'Time to reveal that project you\'ve been working on! Dig your fave outfit out of your closet and get ready to show off.',
-                    lucky_time: '7pm',
-                    color: 'turquoise',
-                    mood: 'excited',
-                    compatibility: 'Libra',
-                    lucky_number: '13',
-                    date_range: 'Mar 22 - Apr 19'
-                }
-            }
+                    name: 'Eleven',
+                    sign: 'Scorpio',
+                    description: 'The demagorgen didn\'t beat you, and neither shall the mind flayer. Keep a clear head tonight... You may be responsible for saving all your friends.'
+                },
+                verdict: 'negative',
+                error: ''
+            };
 
             const expected = {
-                user : {
-                    name: 'Taylor',
-                    sign: 'aries',
-                    description: 'Time to reveal that project you\'ve been working on! Dig your fave outfit out of your closet and get ready to show off.',
-                    lucky_time: '7pm',
-                    color: 'turquoise',
-                    mood: 'excited',
-                    compatibility: 'Libra',
-                    lucky_number: '13',
-                    date_range: 'Mar 22 - Apr 19'
-                }
-            }
+                user: mockState.user,
+                sign: mockState.user.sign,
+                verdict: mockState.verdict,
+                error: mockState.error
+        }
 
             const mappedProps = mapStateToProps(mockState);
 
@@ -86,32 +90,19 @@ describe('HoroscopeForm', () => {
         it('should return an the error object', () => {
             const mockState = {
                 user : {
-                    name: 'Taylor',
-                    sign: 'aries',
-                    description: 'Time to reveal that project you\'ve been working on! Dig your fave outfit out of your closet and get ready to show off.',
-                    lucky_time: '7pm',
-                    color: 'turquoise',
-                    mood: 'excited',
-                    compatibility: 'Libra',
-                    lucky_number: '13',
-                    date_range: 'Mar 22 - Apr 19'
+                    name: 'Eleven',
+                    sign: 'Scorpio',
+                    description: 'The demagorgen didn\'t beat you, and neither shall the mind flayer. Keep a clear head tonight... You may be responsible for saving all your friends.'
                 },
+                verdict: 'negative',
                 error: ''
             };
             const expected = {
-                user : {
-                    name: 'Taylor',
-                    sign: 'aries',
-                    description: 'Time to reveal that project you\'ve been working on! Dig your fave outfit out of your closet and get ready to show off.',
-                    lucky_time: '7pm',
-                    color: 'turquoise',
-                    mood: 'excited',
-                    compatibility: 'Libra',
-                    lucky_number: '13',
-                    date_range: 'Mar 22 - Apr 19'
-                },
-                error: ''
-            };
+                user: mockState.user,
+                sign: mockState.user.sign,
+                verdict: mockState.verdict,
+                error: mockState.error
+        }
 
             const mappedProps = mapStateToProps(mockState);
 

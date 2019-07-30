@@ -59,7 +59,7 @@ export class HoroscopeForm extends React.Component {
     }
 
     render() {
-        // const { user } = props;
+        const { sign } = this.props;
         return (
             <section className='horoscope-form-display'>
                 <form className='horoscope-form'>
@@ -96,7 +96,7 @@ export class HoroscopeForm extends React.Component {
                         </button>
             </FadeIn>
                 </form>
-                {this.props.user.sign && <Redirect to='/horoscope'/>}
+                {sign && <Redirect to='/horoscope'/>}
             </section>
         )
     }
@@ -104,6 +104,7 @@ export class HoroscopeForm extends React.Component {
 
 export const mapStateToProps = state => ({
     user: state.user,
+    sign: state.user.sign,
     error: state.error,
     verdict: state.verdict
 });
