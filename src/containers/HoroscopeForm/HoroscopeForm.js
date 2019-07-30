@@ -1,9 +1,10 @@
 import React from 'react';
-import { postSign } from '../../utilz/apiCalls';
+import { postSign, getEmotion } from '../../utilz/apiCalls';
 import { connect } from 'react-redux';
-import { setUser, hasErrored } from '../../actions'
-import { Link } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import { setUser, hasErrored, setVerdict } from '../../actions'
+import { Redirect } from 'react-router-dom';
+import FadeIn from 'react-fade-in';
+import PropTypes from 'prop-types';
 import './HoroscopeForm.css'
 
 export class HoroscopeForm extends React.Component {
@@ -20,30 +21,49 @@ export class HoroscopeForm extends React.Component {
         this.setState({[e.target.name]: e.target.value})
     }
 
-    checkInputs = () => {
-        if(this.state.name === '' || this.state.value === '') {
+    checkNameInput = () => {
+        if(this.state.name === '') {
             this.setState({ error: 'This input is required' })
         } else {
-            this.setState({ error: ''})
+            this.setState({ error: '' })
+        }
+    }
+
+    checkOptionInput = () => {
+        if(this.state.value === '') {
+            this.setState({ error: 'This input is required' })
+        } else {
+            this.setState({ error: '' })
         }
     }
 
     handleSubmit = async (e) => {
         e.preventDefault();
         const { sign, name } = this.state;
-        this.checkInputs()
+        this.checkNameInput()
+        this.checkOptionInput()
         try {
             let user = await postSign(sign);
             this.props.setUser({...user, sign: sign, name: name})
+            let message = user.description
+            let results = await getEmotion(message)
+            console.log('results', results)
+            return this.props.setVerdict(results)
+            // this.props.loadComplete();
+            // return results
+            // this.props.push('/horoscope')
         } catch ({ message }) {
             this.props.hasErrored(message)
+            // this.props.history.push('/info')  
         }
     }
 
     render() {
+        const { sign } = this.props;
         return (
             <section className='horoscope-form-display'>
                 <form className='horoscope-form'>
+                <FadeIn>
                     <label htmlFor='name'>What's yo name?</label>
                     <input 
                         type='text' 
@@ -55,7 +75,7 @@ export class HoroscopeForm extends React.Component {
                     <span className='errorMessage'>{this.state.error}</span>
                     <label htmlFor='sign'>What's yo sign?</label>
                     <select name='sign' value={this.state.sign} onChange={this.handleChange} className='horoscope-form-input'>
-                        <option>Choose One...</option>
+                        <option value=''>Choose One...</option>
                         <option value='aries'>Aries (Mar 21-Apr 19)</option>
                         <option value='taurus'>Taurus (Apr 20-May 20)</option>
                         <option value='gemini'>Gemini (May 21-June 20)</option>
@@ -72,27 +92,35 @@ export class HoroscopeForm extends React.Component {
                     <span className='errorMessage'>{this.state.error}</span>
                         <button className='horoscope-form-submit' 
                             onClick={e => this.handleSubmit(e)}>
-                            <Link to='/horoscope' className='submit-link'>
-                                YOLO!
-                            </Link>
+                            YOLO!
                         </button>
+            </FadeIn>
                 </form>
+                {sign && <Redirect to='/horoscope'/>}
             </section>
         )
     }
 }
 
 export const mapStateToProps = state => ({
-    user: state.user
+    user: state.user,
+    sign: state.user.sign,
+    error: state.error,
+    verdict: state.verdict
 });
 
 export const mapDispatchToProps = dispatch => ({
     setUser: user => dispatch(setUser(user)),
-    hasErrored: errorMsg => (hasErrored(errorMsg))
+    hasErrored: errorMsg => dispatch(hasErrored(errorMsg)),
+    setVerdict: status => dispatch(setVerdict(status))
 })
 
-// HoroscopeForm.propTypes = {
+HoroscopeForm.propTypes = {
+    user: PropTypes.object,
+    error: PropTypes.string,
+    setUer: PropTypes.func,
+    hasErrored: PropTypes.func
 
-// }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(HoroscopeForm);

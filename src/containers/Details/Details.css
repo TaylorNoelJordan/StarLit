@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Darker+Grotesque|Lobster+Two|Poiret+One&display=swap'); 
+
+.yes-details {
+    align-items: center;
+    color: #9cd8cd;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poiret One', cursive;
+    font-size: 1.5em;
+    margin: 80px 15px 15px 15px;
+}
+
+.yes-details-topic {
+    color: #9cd8cd;
+    font-size: 1.3em;
+    font-family: 'Poiret One', cursive;
+}
+
+.champagne-img {
+    height: 50px;
+    margin: 20px;
+}

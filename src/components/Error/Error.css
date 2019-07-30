@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Darker+Grotesque|Lobster+Two|Poiret+One&display=swap'); 
+
+.page-not-found {
+    align-items: center;
+    color: #9cd8cd;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poiret One', cursive;
+    font-size: 2em;
+    margin-top: 150px;
+    /* min-height: 100vh; */
+}
+
+.error-planet {
+    height: 150px;
+    margin: 15px;
+}
+
+.go-back-btn {
+    border-radius: 15px;
+    box-shadow: 0px 0px 8px #fff;
+    font-size: 18px;
+    font-weight: bold;
+    height: 50px;
+    margin: 30px;
+    opacity: 0.7;
+    width: 130px;
+  }
+  
+  .go-back-btn:hover {
+    box-shadow: 0px 0px 15px #fff;
+    color: #EB4D8D;
+  }
