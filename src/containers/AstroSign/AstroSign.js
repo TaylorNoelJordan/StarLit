@@ -1,21 +1,15 @@
 import React from 'react';
 import './AstroSign.css'
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
-let images = require.context('../../../signImages', true);
-
 
 export const AstroSign = (props) => {
     const { sign, dateRange } = props
-    const img_src= images(`./${sign}.svg`)
-    const sun = images('./039-sun.svg')
+    const sun = 'sun'
     return (
         <>
-        <img src={sign ? img_src : sun} alt='astro sign symbol' className='astro-symbol'/>
+        <img src={require(`../../../signImages/${sign || sun}.svg`)} alt='astro sign symbol' className='astro-symbol'/>
         <p className='date-range'>{dateRange}</p>
-        {!img_src && <Redirect to='/'/>}
         </>
 
     )

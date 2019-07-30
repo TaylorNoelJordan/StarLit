@@ -24,6 +24,9 @@ export const getEmotion = async (message) => {
   try {
     const url = `https://api.dandelion.eu/datatxt/sent/v1/?lang=en&text=${message}&token=${apiKey}`;
     const results = await fetch(url);
+    if(!results.ok) {
+      throw new Error('Having trouble reading you today...')
+    }
     const parsed = await results.json();
     const verdict = parsed.sentiment.type
     return verdict

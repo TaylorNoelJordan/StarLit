@@ -5,11 +5,14 @@ import { clearUser } from '../../actions';
 import { connect } from 'react-redux';
 import FadeIn from 'react-fade-in';
 import PropTypes from 'prop-types';
+import happyPlanet from '../../images/033-planet-7.svg';
+import sadPlanet from '../../images/028-planet-4.svg';
 import './HoroscopeDetails.css';
 
 export const HoroscopeDetails = (props) => {
     const yesMessage = (
             <>
+                <img src={happyPlanet} alt='smiling purple planet' className='verdict-planet'/>
                 <p>The stars have aligned and the heavens have parted! The cosmos give permission for an evening of boozy indulgence, 
                     with the condition that the vibes stay as high as possible. Stay safe and have fun! 
                     Need some advice on what to wear and who to link up with?</p>
@@ -18,9 +21,12 @@ export const HoroscopeDetails = (props) => {
     )
 
     const noMessage = (
+        <>
+            <img src={sadPlanet} alt='sleeping purple planet' className='verdict-planet'/>
             <p>Outlook not so good. Looks like the planetary alignment is calling for a little more detox, a little less retox. 
                 Take tonight as an opportunity to tune inward, face that scary stuff you’ve been putting off, do a face mask and 
                 get some deep sleep. Enjoy a night in and check back tomorrow.</p>
+        </>
     )
 
     const { name, message, verdict, clearUser } = props;
