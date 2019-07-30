@@ -89,10 +89,28 @@ describe('errorReducer', () => {
 
 describe('verdictReducer', () => {
     it('should return initial state', () => {
-        
+        const expected = '';
+
+        const result = verdictReducer(undefined, '');
+
+        expect(result).toEqual(expected);
     });
 
     it('should set the verdict with SET_VERDICT', () => {
+        const state = ''
+
+        const status = 'positive';
+
+        const action = {
+            type: 'SET_VERDICT',
+            status
+        }
+
+        const expected = 'positive'
+
+        const result = verdictReducer(state, action)
+
+        expect(result).toEqual(expected)
 
     })
 })
