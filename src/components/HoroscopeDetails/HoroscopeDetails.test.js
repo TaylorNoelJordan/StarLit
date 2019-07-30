@@ -23,7 +23,6 @@ describe('HoroscopeDetails', () => {
             message: 'The demagorgen didn\'t beat you, and neither shall the mind flayer. Keep a clear head tonight... You may be responsible for saving all your friends.',
             verdict: 'negative'
         }
-        // const { user, name, sign, verdict } = mockState
         wrapper = shallow(<HoroscopeDetails props={mockProps}/>);
     });
 
