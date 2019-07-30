@@ -60,10 +60,29 @@ describe('userReducer', () => {
 
 describe('errorReducer', () => {
     it('should return initial state', () => {
+        const expected = '';
+
+        const result = errorReducer(undefined, '');
+
+        expect(result).toEqual(expected);
         
     });
 
     it('should return an error with HAS_ERRORED', () => {
+        const state = '';
+
+        const errorMsg = {error: 'Sorry, stars not aligned'};
+
+        const action = {
+            type: 'HAS_ERRORED',
+            errorMsg
+        }
+
+        const expected = {error: 'Sorry, stars not aligned'}
+
+        const result = errorReducer(state, action)
+
+        expect(result).toEqual(expected)
 
     });
 })
