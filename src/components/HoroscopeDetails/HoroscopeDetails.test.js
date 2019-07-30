@@ -6,10 +6,10 @@ import { clearUser } from '../../actions';
 
 describe('HoroscopeDetails', () => {
     let wrapper;
-    let mockState;
+    let mockProps;
 
     beforeEach(() => {
-        mockState = {
+        mockProps = {
             user: {
                 name: 'Eleven',
                 sign: 'Scorpio',
@@ -18,10 +18,13 @@ describe('HoroscopeDetails', () => {
                 mood: 'on',
                 date_range: ''
             },
-            verdict: ''
+            verdict: '',
+            name: 'Eleven',
+            message: 'The demagorgen didn\'t beat you, and neither shall the mind flayer. Keep a clear head tonight... You may be responsible for saving all your friends.',
+            verdict: 'negative'
         }
-        const { user, name, sign, verdict } = mockState
-        wrapper = shallow(<HoroscopeDetails props={mockState}/>);
+        // const { user, name, sign, verdict } = mockState
+        wrapper = shallow(<HoroscopeDetails props={mockProps}/>);
     });
 
     it('should match the snapshot', () => {
@@ -29,31 +32,30 @@ describe('HoroscopeDetails', () => {
     });
 
     it('should route to more details with affirmative results', () => {
-        expect(wrapper.find(Link).props().to).toBe('/details');
+        expect(wrapper.find(Link).props().to).toBe('/');
+        // expect(wrapper.find(Link).props().to).toBe('/details');
+
     });
 
     describe('mapStateToProps', () => {
         it('should return corresponding portions of state', () => {
+        
             const mockState = {
-                user: {
+                user : {
                     name: 'Eleven',
                     sign: 'Scorpio',
-                    description: 'The demagorgen didn\'t beat you, and neither shall the mind flayer. Keep a clear head tonight... You may be responsible for saving all your friends.',
-                    color: 'gray',
-                    mood: 'on',
-                    date_range: ''
+                    description: 'The demagorgen didn\'t beat you, and neither shall the mind flayer. Keep a clear head tonight... You may be responsible for saving all your friends.'
                 },
-                verdict: ''
+                verdict: 'negative'
+    
             }
 
             const expected = {
-                    name: mockState.user.name,
-                    sign: mockState.user.sign,
-                    message: mockState.user.description,
-                    dateRange: mockState.user.date_range,
-                    verdict: ''
-            }
-
+                user: mockState.user,
+                name: mockState.user.name,
+                message: mockState.user.description,
+                verdict: mockState.verdict
+        }
             const mappedProps = mapStateToProps(mockState);
             expect(mappedProps).toEqual(expected)
         });

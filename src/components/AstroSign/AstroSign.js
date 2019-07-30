@@ -1,9 +1,9 @@
 import React from 'react';
 import './AstroSign.css'
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 // import sun from '../../images/039-sun.svg;'
-let images = require.context('../../../signImages', true);
+// let images = require.context('../../../signImages', true);
 
 
 

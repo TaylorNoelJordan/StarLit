@@ -23,9 +23,7 @@ export const HoroscopeDetails = (props) => {
                 get some deep sleep. Enjoy a night in and check back tomorrow.</p>
     )
 
-    const { name, message, user, verdict, clearUser } = props;
-    console.log(props)
-
+    const { name, message, verdict, clearUser } = props;
     return (
         <FadeIn>
             <section className='horoscope-details-display'>
@@ -36,11 +34,11 @@ export const HoroscopeDetails = (props) => {
                 <h2 className='results-heading'>The Verdict:</h2>
                     {verdict ==='positive' ? yesMessage : noMessage}
                 </article>
-                {!user.name && <Redirect to='/'/>}
+                {!name && <Redirect to='/'/>}
                 <Link to='/'>
                     <button 
                         className='start-over-btn'
-                        onClick={clearUser()}>
+                        onClick={clearUser}>
                             Start Over
                     </button>
                 </Link>
@@ -56,7 +54,7 @@ export const mapStateToProps = state => ({
     verdict: state.verdict
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
     clearUser: () => dispatch(clearUser())
 })
 
