@@ -5,13 +5,13 @@ import confused from '../../images/030-space-3.svg';
 
 const Error = () => {
     return (
-        <section>
-            <h2 className='page-not-found'>404 ERROR: Stars not aligned</h2>
+        <section className='page-not-found'>
+            <h2>404 ERROR: Stars not aligned on this page...</h2>
             <img src={confused} alt='uh-oh' className='error-planet'/>
             <Link to='/'>
                 <button 
-                    className='start-over-btn'>
-                        Start Over
+                    className='go-back-btn'>
+                        Go Back
                 </button>
             </Link>
         </section>

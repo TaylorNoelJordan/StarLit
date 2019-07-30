@@ -1,10 +1,10 @@
 import React from 'react';
 import './AstroSign.css'
 import { connect } from 'react-redux';
-// import { Redirect } from 'react-router-dom';
-// import sun from '../../images/039-sun.svg;'
-// let images = require.context('../../../signImages', true);
+import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
+let images = require.context('../../../signImages', true);
 
 
 export const AstroSign = (props) => {
@@ -25,5 +25,10 @@ export const mapStateToProps = state => ({
     sign: state.user.sign,
     dateRange: state.user.date_range
 })
+
+AstroSign.propTypes = {
+    sign: PropTypes.string,
+    dateRange: PropTypes.string
+}
 
 export default connect(mapStateToProps)(AstroSign);
