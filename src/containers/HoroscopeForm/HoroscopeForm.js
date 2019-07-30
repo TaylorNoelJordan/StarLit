@@ -5,6 +5,7 @@ import { setUser, hasErrored, setVerdict } from '../../actions'
 import { Redirect } from 'react-router-dom';
 import FadeIn from 'react-fade-in';
 import PropTypes from 'prop-types';
+import '../../components/App/responsive.css'
 import './HoroscopeForm.css'
 
 export class HoroscopeForm extends React.Component {
