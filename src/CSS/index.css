@@ -1,0 +1,7 @@
+@import '../components/App/App.css';
+@import '../components/Error/Error.css';
+@import '../containers/AstroSign/AstroSign.css';
+@import '../containers/Details/Details.css';
+@import '../containers/HoroscopeDetails/HoroscopeDetails.css';
+@import '../containers/HoroscopeForm/HoroscopeForm.css';
+@import '../components/App/responsive.css'
