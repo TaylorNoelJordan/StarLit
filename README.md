@@ -53,8 +53,8 @@ This project implemented skills with:
 - Connecting with friends
 
 ## API sources
-[aztro](https://rapidapi.com/sameer.kumar/api/aztro)
-[dandelion](https://dandelion.eu/docs/api/datatxt/sent/v1/)
+- [aztro](https://rapidapi.com/sameer.kumar/api/aztro)
+- [dandelion](https://dandelion.eu/docs/api/datatxt/sent/v1/)
 
 Please enjoy and feel free to message me with feedback!
 View more project by me [here.](https://github.com/TaylorNoelJordan?tab=repositories)
