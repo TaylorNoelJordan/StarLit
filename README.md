@@ -14,12 +14,14 @@ To set up:
 ## Screengrabs
 Home Page:
 ![starlit-home](https://user-images.githubusercontent.com/47507801/62103567-0c058580-b25a-11e9-9de3-bbc91174ad9b.gif)
-<img width="1434" alt="Screen Shot 2019-07-29 at 11 32 26 PM" src="https://user-images.githubusercontent.com/47507801/62103601-22abdc80-b25a-11e9-8d6e-c9efc5f76c0a.png">
+
 
 Input Form:
-![starlit-results](https://user-images.githubusercontent.com/47507801/62103582-145dc080-b25a-11e9-98d1-76da2bbd4c73.gif)
+<img width="1434" alt="Screen Shot 2019-07-29 at 11 32 26 PM" src="https://user-images.githubusercontent.com/47507801/62103601-22abdc80-b25a-11e9-8d6e-c9efc5f76c0a.png">
+
 
 Results for going out and Details Page:
+![starlit-results](https://user-images.githubusercontent.com/47507801/62103582-145dc080-b25a-11e9-98d1-76da2bbd4c73.gif)
 <img width="725" alt="Screen Shot 2019-07-29 at 11 32 53 PM" src="https://user-images.githubusercontent.com/47507801/62103605-25a6cd00-b25a-11e9-9d3e-b9dcafaa14e9.png">
 <img width="1417" alt="Screen Shot 2019-07-29 at 11 33 08 PM" src="https://user-images.githubusercontent.com/47507801/62103607-28a1bd80-b25a-11e9-9097-d377a7aa4bce.png">
 
